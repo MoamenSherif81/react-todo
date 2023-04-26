@@ -1,0 +1,22 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "title": "First Task",
+      "priority": 1,
+      "state": "pending"
+    },
+    {
+      "id": 2,
+      "title": "Second Task",
+      "priority": 2,
+      "state": "in progress"
+    },
+    {
+      "id": 3,
+      "title": "Third Task",
+      "priority": 1,
+      "state": "completed"
+    }
+  ]
+}
