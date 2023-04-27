@@ -1,40 +1,16 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "title": "First Task",
+      "title": "Task 1",
       "priority": "minor",
-      "state": "pending"
-    },
-    {
-      "id": 2,
-      "title": "Second Task",
-      "priority": "normal",
-      "state": "in progress"
-    },
-    {
-      "id": 3,
-      "title": "Third Task",
-      "priority": "critical",
-      "state": "completed"
-    },
-    {
-      "title": "fsafsdfa",
-      "priority": "minor",
-      "state": "in progress",
-      "id": 4
-    },
-    {
-      "title": "fasdfsdf",
-      "priority": "critical",
       "state": "pending",
-      "id": 5
+      "id": 1
     },
     {
-      "title": "Ok",
+      "title": "Task 2",
       "priority": "minor",
-      "state": "cancled",
-      "id": 6
+      "state": "completed",
+      "id": 2
     }
   ]
 }

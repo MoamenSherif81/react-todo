@@ -10,6 +10,8 @@ function App() {
   const [onHoldTodos, setOnHoldTodos] = useState([]);
   const [completedTodos, setCompletedTodos] = useState([]);
   const [editing, setEditing] = useState(false);
+  const [adding, setAdding] = useState(false);
+  const [currentEditing, setCurrentEditing] = useState();
 
   function getTasksData(){
     fetch('http://localhost:3001/tasks')
@@ -31,18 +33,44 @@ function App() {
   }, [])
   
   function toggleEditing(){
-    console.log('Here');
+    if(adding) toggleAdding();
     setEditing(prev => !prev);
+  }
+  function toggleAdding(){
+    if(editing) toggleEditing();
+    setAdding(prev => !prev);
+  }
+
+  function cancelEditing(){
+    if(editing) toggleEditing();
+    else if(adding) toggleAdding();
   }
 
   return (
     <div className="App">
-      <Header todosCnt={onHoldTodos.length} editing={editing} toggleEditing={toggleEditing} />
-      {editing ? 
-        <AddTask toggleEditing={toggleEditing} getTasksData={getTasksData}/>
+      <Header todosCnt={onHoldTodos.length} toggleAdding={toggleAdding} editing={editing} adding={adding} cancelEditing={cancelEditing} />
+      {adding ? 
+        <AddTask toggleAdding={toggleAdding} getTasksData={getTasksData}/>
         : ''
       }
-      <TodosList onHoldTodos={onHoldTodos} completedTodos={completedTodos} />
+      {editing ? 
+        <AddTask 
+          currentEditing={currentEditing} 
+          toggleAdding={toggleAdding} 
+          toggleEditing={toggleEditing} 
+          getTasksData={getTasksData}
+        />
+        : ''
+      }
+      <TodosList 
+        setCurrentEditing={setCurrentEditing} 
+        currentEditing={currentEditing}
+        setEditing={setEditing} 
+        onHoldTodos={onHoldTodos} 
+        completedTodos={completedTodos} 
+        editing={editing}
+        getTasksData={getTasksData}
+      />
     </div>
   );
 }
