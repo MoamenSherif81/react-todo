@@ -3,20 +3,38 @@
     {
       "id": 1,
       "title": "First Task",
-      "priority": 1,
+      "priority": "minor",
       "state": "pending"
     },
     {
       "id": 2,
       "title": "Second Task",
-      "priority": 2,
+      "priority": "normal",
       "state": "in progress"
     },
     {
       "id": 3,
       "title": "Third Task",
-      "priority": 1,
+      "priority": "critical",
       "state": "completed"
+    },
+    {
+      "title": "fsafsdfa",
+      "priority": "minor",
+      "state": "in progress",
+      "id": 4
+    },
+    {
+      "title": "fasdfsdf",
+      "priority": "critical",
+      "state": "pending",
+      "id": 5
+    },
+    {
+      "title": "Ok",
+      "priority": "minor",
+      "state": "cancled",
+      "id": 6
     }
   ]
 }
