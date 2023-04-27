@@ -162,6 +162,8 @@ header{
   border: 1px solid rgba(0, 0, 0, 0.2);
   padding: 10px 20px;
   border-radius: 20px;
+  z-index: 10;
+  background-color: white;
 }
 
 .todo-options:hover .edit-btns{
@@ -202,5 +204,34 @@ header{
 @media (max-width: 1400px) {
   .edit-btns{
     right: 0;
+  }
+}
+
+
+@media (max-width: 768px) {
+  header{
+    display: block;
+
+  }
+  .header-title{
+    font-size: 25px;
+  }
+  .add-task{
+    padding: 5px 10px;
+    font-size: 16px;
+  }
+  .todo{
+    flex-wrap: wrap;
+  }
+
+  .status, .priority{
+    font-size: 16px;
+  }
+
+  .todo-title{
+    width: 100%;
+  }
+  .todo p{
+    margin-bottom: 20px;
   }
 }

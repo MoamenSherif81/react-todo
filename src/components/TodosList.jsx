@@ -3,34 +3,22 @@ import Todo from "./todo";
 
 function TodosList(props){
 
-  const onHoldTodos = props.onHoldTodos.map(ele => {
-    return (
+  const onHoldTodos = [], completedTodos = [];
+
+  props.todos.forEach((ele) => {
+    const todo = (
       <Todo 
         key={ele.id} 
-        id={ele.id}
-        taskTitle={ele.title}
+        {...ele}
         setCurrentEditing={props.setCurrentEditing}
-        status={ele.state} 
-        priority={ele.priority} 
+        currentEditing={props.currentEditing}
         setEditing={props.setEditing}
         editing={props.editing}
-        currentEditing={props.currentEditing}
         getTasksData={props.getTasksData}
-      />)
-  })
-  const completedTodos = props.completedTodos.map(ele => {
-    return (
-      <Todo 
-        key={ele.id} 
-        id={ele.id}
-        taskTitle={ele.title}
-        setCurrentEditing={props.setCurrentEditing}
-        status={ele.state} 
-        priority={ele.priority} 
-        setEditing={props.setEditing}
-        editing={props.editing}
-        currentEditing={props.currentEditing}
-      />)
+      />
+    )
+    if(ele.state === 'completed' || ele.state === 'cancled') completedTodos.push(todo);
+    else onHoldTodos.push(todo);
   })
   
   return (

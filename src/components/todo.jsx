@@ -2,11 +2,11 @@ import editIcon from '../images/edit.svg'
 import deleteIcon from '../images/delete.svg'
 import moreIcon from '../images/more.svg'
 import correctIcon from '../images/correct.svg'
+import { editTodoAPI } from '../services/api';
 
 function Todo(props){
-
   let statusColor;
-  switch(props.status){
+  switch(props.state){
     case 'pending':
       statusColor = '#F2994A';
       break;
@@ -36,27 +36,16 @@ function Todo(props){
     }
   }
 
-  function editStatue(state){
-    const editData = async () => {
-      await fetch('http://localhost:3001/tasks/' + props.id, {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          state: state
-        })
-      })
-      props.getTasksData();
-    }
-    editData();
+  async function editStatue(state){
+    await editTodoAPI({state}, props.id);
+    props.getTasksData();
   }
 
   return (
     <div className="todo">
-      <p className="todo-title">{props.taskTitle}</p>
+      <p className="todo-title">{props.title}</p>
       <div className="status" style={statuesStyles}>
-        {props.status.charAt(0).toUpperCase() + props.status.slice(1)}
+        {props.state.charAt(0).toUpperCase() + props.state.slice(1)}
       </div>
       <div className={"priority priority--" + (props.priority === 'minor' ? 'green' : props.priority === 'normal' ? 'yellow' : 'red')}>
         {props.priority.charAt(0).toUpperCase() + props.priority.slice(1)}

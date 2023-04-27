@@ -10,7 +10,7 @@ function Header({...props}){
 
   return (
     <header>
-      <div>
+      <div className='header-title'>
         You've got <span className="header--pink">{todosCnt} {todosCnt > 1 ? 'tasks' : 'task'}</span> today
       </div>
       <button to='addTask' className="add-task" onClick={handleAddBtn}><img src={addIcon} alt='Add Icon'/>
